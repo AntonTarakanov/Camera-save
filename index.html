@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>CameraSave</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="app">
+
+        <a href="#" id="start-camera" class="visible">Start app.</a>
+        <video id="camera-stream"></video>
+        <img id="snap">
+        <p id="error-message"></p>
+
+        <div class="controls">
+            <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">del</i></a>
+            <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">cam</i></a>
+            <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">download</i></a>
+        </div>
+
+        <canvas></canvas>
+
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</div>
+
+</body>
+</html>
