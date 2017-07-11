@@ -7,6 +7,7 @@ var video = document.querySelector('#camera-stream'),
     download_photo = document.querySelector('#download-photo'),
     error = document.querySelector('#error-message');
 
+
 // _________ compatibility
 function getNavigator () {
     return ( navigator.getUserMedia ||
@@ -55,6 +56,34 @@ function takePhoto (event) {
     video.pause();
 }
 
+var box = document.getElementById("box");
+
+function takeLinkPhoto (event, snap) {
+    event.preventDefault();
+    var inputFile = document.getElementById('qwe').files[0];
+    console.log(inputFile);
+    var output = "";
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        console.log("start");
+        box.style.backgroundImage = "url('"+e.target.result +"')";
+        output = e.target.result;
+        doDo(output);
+    };
+    reader.readAsDataURL(inputFile);
+}
+
+function doDo (out) {
+    var snap = out;
+    image.setAttribute('src', snap);
+    image.classList.add("visible");
+    delete_photo.classList.remove("disabled");
+    download_photo.classList.remove("disabled");
+    download_photo.href = snap;
+    video.pause();
+}
+
 function deletePhoto(event) {
     event.preventDefault();
     image.setAttribute('src', "");
@@ -70,6 +99,8 @@ function showVideo(){
     controls.classList.add("visible");
 }
 
+load_photo = document.getElementById("load-photo");
+load_photo.addEventListener("click", takeLinkPhoto);
 camera.addEventListener("click", startVideo);
 take_photo.addEventListener("click", takePhoto);
 delete_photo.addEventListener("click", deletePhoto);
